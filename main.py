@@ -1,21 +1,18 @@
 import pygame
 
+#start pygame
 pygame.init()
 running = True
 
 joysticks = []
 
-#fe the xbox one controller
+#find and connect the xbox controller
 for i in range(0, pygame.joystick.get_count()):
     joysticks.append(pygame.joystick.Joystick(i))
     joysticks[-1].init()
     print("Detected joystick '" + joysticks[-1].get_name() + "'")
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-                running = False
-        
+while True:
         #buttons, bumpers, and menu/view buttons
         if event.type == pygame.JOYBUTTONDOWN:
             if event.button == 0:
@@ -49,7 +46,7 @@ while running:
                 #right joystick button
                 print('RJB')
          
-         #D-pad
+        #D-pad
         if event.type == pygame.JOYHATMOTION:
             if event.value[0] == 1:
                 #right d-pad
